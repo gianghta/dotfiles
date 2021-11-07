@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/Users/gianghta'
+let g:netrw_dirhist_3='/Users/gianghta/Desktop/projects/personal-projects/saki-chan'
+let g:netrw_dirhist_2='/Users/gianghta/Desktop/projects/personal-projects'
+let g:netrw_dirhist_1='/Users/gianghta/Desktop/projects'
+let g:netrw_dirhist_0='/Users/gianghta/Desktop'
+let g:netrw_dirhist_9='/Users/gianghta'
+let g:netrw_dirhist_8='/Users/gianghta/Desktop'
+let g:netrw_dirhist_7='/Users/gianghta/Desktop/projects'
+let g:netrw_dirhist_6='/Users/gianghta/Desktop/projects/personal-projects'
+let g:netrw_dirhist_5='/Users/gianghta/Desktop/projects/personal-projects/saki-chan'
