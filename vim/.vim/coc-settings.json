@@ -1,0 +1,9 @@
+{
+    "metals": {
+        "javaHome": "/Library/Java/JavaVirtualMachines/amazon-corretto-17.jdk/Contents/Home",
+        "statusBarEnabled": true
+    },
+    "jedi": {
+        "enable": true
+    }
+}
