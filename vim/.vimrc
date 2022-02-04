@@ -61,6 +61,9 @@ set splitbelow
 " Add margin to left column
 set foldcolumn=1
 
+" Set default terminal color support
+set term=xterm-256color
+
 " Give more space for displaying messages.
 set cmdheight=2
 
@@ -101,8 +104,8 @@ Plug 'tpope/vim-commentary'
 " Auto pairing braces
 Plug 'jiangmiao/auto-pairs'
 
-" Nord theme
-Plug 'arcticicestudio/nord-vim'
+" Everforest theme
+Plug 'sainnhe/everforest'
 
 call plug#end()
 
@@ -287,7 +290,7 @@ let g:airline_powerline_fonts = 1
 set laststatus=2
 "show PASTE if in paste mode
 let g:airline_detect_paste=1
-let g:airline_theme='nord'
+let g:airline_theme='everforest'
 
 "-------------------Scala language stuff--------------
 " Help Vim recognize *.sbt and *.sc as Scala files
@@ -308,14 +311,16 @@ nnoremap <silent> <space>tb :<C-u>CocCommand metals.tvp metalsBuild<CR>
 nnoremap <silent> <space>tf :<C-u>CocCommand metals.revealInTreeView metalsPackages<CR>
 
 "----------Layout theme------------------------------
-let g:nord_uniform_status_lines = 1
-let g:nord_bold_vertical_split_line = 1
-let g:nord_uniform_diff_background = 1
-let g:nord_italic = 1
-let g:nord_italic_comments = 1
-let g:nord_underline = 1
-let g:nord_cursor_line_number_background = 1
-colorscheme nord
+" Set contrast.
+" This configuration option should be placed before `colorscheme everforest`.
+" Available values: 'hard', 'medium'(default), 'soft'
+let g:everforest_background = 'hard'
+let g:everforest_enable_italic = 1
+let g:everforest_disable_italic_comment = 1
+let g:everforest_diagnostic_line_highlight = 1
+let g:everforest_diagnostic_text_highlight = 1
+let g:everforest_diagnostic_virtual_text = 'colored'
+colorscheme everforest
 
 " Cursor Mode Settings
 let &t_SI.="\e[5 q" "SI = INSERT mode
