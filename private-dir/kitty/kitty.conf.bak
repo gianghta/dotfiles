@@ -1,0 +1,18 @@
+# Fonts
+font_family Hack Nerd Font Mono
+italic_font auto
+bold_font auto
+font_size 18.0
+
+# Cursor
+# cursor #8fee96
+cursor_shape block
+
+term xterm-256color
+background_opacity 1.95
+
+
+# BEGIN_KITTY_THEME
+# Rosé Pine
+include current-theme.conf
+# END_KITTY_THEME
