@@ -9,7 +9,7 @@ fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/gianghta/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -93,6 +93,8 @@ source $ZSH/oh-my-zsh.sh
 source ~/env.sh
 
 # User configuration
+bindkey "\e[1;3D" backward-word # ⌥←
+bindkey "\e[1;3C" forward-word # ⌥→
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -120,3 +122,5 @@ source ~/env.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
