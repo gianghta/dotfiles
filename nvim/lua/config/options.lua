@@ -9,4 +9,4 @@ vim.opt.tabstop = 2
 vim.opt.cmdwinheight = 1
 
 --  Auto scroll when reach almost {line}
-vim.opt.scrolloff = 15
+vim.opt.scrolloff = 20
