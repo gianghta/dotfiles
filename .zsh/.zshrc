@@ -19,6 +19,9 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-
 
 ### USER CONFIGS
 
+# Set man page to use nvim
+export MANPAGER='nvim +Man!'
+
 # add local bin to path
 export PATH=$HOME/bin:$PATH
 
@@ -37,12 +40,15 @@ export PYENV_ROOT="$HOME/.pyenv"
 eval "$(pyenv init -)"
 
 # ------ Golang ----------------------------------------
-export GOPATH="$HOME/go"
-export PATH="$PATH:$(go env GOPATH)/bin"
+export PATH="$PATH:/usr/local/go/bin"
 
-### ---- load sdkman ---------
+### ---- load sdkman -----------------------------------
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # ---- Load Starship -----------------------------------
+export STARSHIP_CONFIG="$HOME/starship.toml"
 eval "$(starship init zsh)"
+
+# Load Neovim
+export PATH="$PATH:/opt/nvim-linux64/bin"

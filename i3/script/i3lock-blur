@@ -1,0 +1,58 @@
+#!/bin/bash
+revert() {
+    rm /tmp/*screen*.png
+    xset dpms 0 0 0
+
+    # Restore i3 settings to prevent screen turn off
+    xset -dpms
+    xset s off
+    xset s noblank
+}
+trap revert HUP INT TERM
+xset +dpms dpms 0 0 5
+
+# Get monitor resolutions and positions
+IFS=$'\n' read -d '' -r -a monitors < <(xrandr --listmonitors | awk 'NR>1 {print $3}')
+
+# Paths
+SCREENSHOT="/tmp/locking_screen.png"
+BLURRED="/tmp/screen_blur.png"
+FINAL="/tmp/screen.png"
+OVERLAY="$HOME/Pictures/rick-morty-lock.png"
+
+# Get overlay image dimensions
+overlay_width=$(identify -format "%w" "$OVERLAY")
+overlay_height=$(identify -format "%h" "$OVERLAY")
+
+# Capture the entire screen
+maim -d 1 "$SCREENSHOT"
+convert "$SCREENSHOT" -blur 0x40 "$BLURRED"
+
+# Create a blank image with the same size as the full screen
+cp "$BLURRED" "$FINAL"
+
+# Offsets to adjust overlay positioning
+offset_x=100 # Adjust for left (-) / right (+) movement
+offset_y=500 # Adjust for up (+) / down (-) movement
+
+# Apply the overlay on each monitor
+for monitor in "${monitors[@]}"; do
+    # Extract resolution and position
+    res_x=$(echo "$monitor" | cut -d '/' -f 1 | cut -d 'x' -f 1)
+    res_y=$(echo "$monitor" | cut -d '/' -f 1 | cut -d 'x' -f 2)
+    pos_x=$(echo "$monitor" | cut -d '+' -f 2)
+    pos_y=$(echo "$monitor" | cut -d '+' -f 3)
+
+    # Calculate adjusted overlay position
+    center_x=$((pos_x + (res_x / 2) - (overlay_width / 2) + offset_x))
+    center_y=$((pos_y + (res_y / 2) - (overlay_height / 2) - offset_y))
+
+    # Overlay the image at the calculated position
+    convert "$FINAL" "$OVERLAY" -geometry "+${center_x}+${center_y}" -composite "$FINAL"
+done
+
+# Lock the screen with the final image
+i3lock -t -i "$FINAL"
+
+# Cleanup
+revert
